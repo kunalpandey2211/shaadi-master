@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome - Kunal & Janki's Wedding</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .welcome-container {
+            background-color: rgba(0, 83, 83, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 100px auto;
+        }
+        .welcome-title {
+            font-family: 'Great Vibes', cursive;
+            color: #ffffff;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #ffffff;
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .btn-primary {
+            background-color: #e47a2e;
+            border-color: #e47a2e;
+        }
+        .btn-primary:hover {
+            background-color: #c5611a;
+            border-color: #c5611a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="welcome-container text-center">
+            <h1 class="welcome-title">Welcome to Our Wedding</h1>
+            <p class="text-white mb-4">We're excited to celebrate with you! Please enter your name to continue.</p>
+            <p class="text-white mb-4">After entering, you'll have the option to generate a personalized invitation card!</p>
+            <form id="nameForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="visitorName" placeholder="Your Name" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg mt-3">Enter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('nameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('visitorName').value;
+            localStorage.setItem('visitorName', name);
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>

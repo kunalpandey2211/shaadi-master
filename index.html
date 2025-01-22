@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Kunal & Janki</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Add this style block just before the closing </head> tag -->
+    <style>
+        body {
+            background-image: url('../wedding_invitation/img/bg1.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .background-left, .background-right {
+            height: auto;
+        }
+
+        .background-left {
+            float: left;
+        }
+
+        .background-right {
+            float: right;
+        }
+
+        /* For mobile devices */
+        @media (max-width: 767px) {
+            .background-left, .background-right {
+                width: 37vw;
+            }
+        }
+
+        /* For tablets and larger devices */
+        @media (min-width: 768px) {
+            .background-left, .background-right {
+                width: 24vw;
+            }
+        }
+
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FFE4E1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 1rem;
+        }
+
+        .welcome-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #8B4513;
+            text-align: center;
+        }
+
+        .welcome-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .welcome-option {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .welcome-option:hover {
+            transform: scale(1.05);
+        }
+
+        .welcome-option img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-option p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: #8B4513;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            .welcome-title {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .welcome-options {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .welcome-option img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .welcome-option p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Media query for very small screens */
+        @media (max-width: 360px) {
+            .welcome-title {
+                font-size: 2rem;
+            }
+
+            .welcome-option img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .welcome-option p {
+                font-size: 0.9rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            -webkit-overflow-scrolling: touch;
+            overflow-y: scroll;
+        }
+
+        /* Remove any scroll-snap properties if they exist */
+        .event-container, .event-card {
+            scroll-snap-align: none;
+        }
+
+        /* Ensure content isn't causing horizontal overflow */
+        .container-fluid, .container {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="51" class="bg-image">
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <h1 class="welcome-title">Welcome to Our Wedding</h1>
+        <div class="welcome-options">
+            <div class="welcome-option" onclick="selectOption('bride')">
+                <img src="img/bride.png" alt="Bride">
+                <p>Bride's Side</p>
+            </div>
+            <div class="welcome-option" onclick="selectOption('groom')">
+                <img src="img/groom.png" alt="Groom">
+                <p>Groom's Side</p>
+            </div>
+        </div>
+    </div>
+    <div class="glass-overlay"></div>
+    <!-- Navbar Start -->
+    <nav class="navbar fixed-top shadow-sm navbar-expand-lg navbar-dark py-3 py-lg-0 px-lg-5 glassmorphism" style="background-color: #bbacd8;">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <h1 class="font-secondary text-white mb-n2 couple-names" style="font-family: 'Tangerine', cursive; font-size: 2.5rem;">Kunal <span class="text-primary">&</span> Janki</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav ml-auto py-0">
+                <!-- <a href="#home" class="nav-item nav-link active">Home</a>
+                <a href="#about" class="nav-item nav-link">Groom & Bride</a> -->
+                <a href="#event" class="nav-item nav-link">Event</a>
+
+                <!-- <a href="#story" class="nav-item nav-link">Story</a>
+                <a href="#gallery" class="nav-item nav-link">Gallery</a> -->
+            </div>
+            <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">
+                <h1 class="font-secondary text-white mb-n2 couple-names" style="font-family: 'Tangerine', cursive; font-size: 3.5rem;">Kunal <span class="text-primary">&</span> Janki</h1>
+            </a>
+            <div class="navbar-nav mr-auto py-0">
+                <!-- <a href="#family" class="nav-item nav-link">Family</a>
+                <a href="#rsvp" class="nav-item nav-link">RSVP</a> -->
+                <a href="#contact" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0" id="home">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px;">
+                    <img class="position-absolute w-100 h-100" src="img/bg-wedding.png" style="object-fit: cover;">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px; margin-top: 200px;">
+                            <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4 couple-names" style="font-family: 'Tangerine', cursive; font-size: 4rem; line-height: 1;">
+                                <span class="amit-text">Kunal</span> & Janki
+                            </h1>
+                            <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
+                                <h3 class="text-uppercase font-weight-normal text-white m-0" style="letter-spacing: 2px;">We're getting married</h3>
+                                <h3 class="timer font-weight-normal text-white" style="letter-spacing: 2px; margin-top: 15px;"></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+    <!-- Save the Date Start -->
+    <div class="container-fluid py-5 glassmorphism shine save-the-date audio-trigger" style="background-color: #FFE4E1; margin-top: -5px;">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="text-uppercase mb-3" style="letter-spacing: 3px; font-size: 1.5rem; color: #8B4513;">Save the Date</h6>
+                <h1 class="font-secondary display-3 mb-4" style="font-family: 'Great Vibes', cursive; color: #800000;">22nd November 2026</h1>
+                
+                <!-- Add to Calendar button -->
+                <a class="btn btn-outline-dark btn-lg mb-4" href="#" onclick="addToCalendar(event)" style="color: #8B4513; border-color: #8B4513;">
+                    <i class="far fa-calendar-alt mr-2"></i>Add to Calendar
+                </a>
+                
+                <!-- Download Invitation button -->
+                <div>
+                    <a href="#" onclick="downloadInvitation(event)" class="btn btn-outline-dark btn-lg mb-4" style="color: #8B4513; border-color: #8B4513;">
+                        <i class="fas fa-download mr-2"></i>Download Invitation
+                    </a>
+                </div>
+                
+                <!-- See the Venue button -->
+                <div>
+                    <a href="https://maps.app.goo.gl/KuQxsJC7wxiyj7JF9" 
+                       target="_blank" 
+                       class="btn btn-outline-dark btn-lg mb-4 see-venue-btn" style="color: #8B4513; border-color: #8B4513;">
+                        <i class="fas fa-map-marker-alt mr-2"></i>See the Venue
+                    </a>
+                </div>
+
+                <!-- Add RSVP Button that opens modal -->
+                <div>
+                    <button class="btn btn-outline-dark btn-lg mb-4" data-toggle="modal" data-target="#rsvpModal" style="color: #8B4513; border-color: #8B4513;">
+                        <i class="fas fa-envelope mr-2"></i>RSVP
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Save the Date End -->
+
+    <!-- Add this RSVP Modal after the Save the Date section -->
+    <div class="modal fade" id="rsvpModal" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background-color: #FFE4E1;">
+                <div class="modal-header" style="border-bottom: 1px solid #8B4513;">
+                    <h5 class="modal-title" id="rsvpModalLabel" style="color: #8B4513; font-family: 'Great Vibes', cursive; font-size: 2rem;">RSVP</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="post" id="rsvpForm" onsubmit="handleRSVP(event)" data-netlify="true">
+                        <div class="form-group">
+                            <label for="name" style="color: #8B4513;">Your Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" style="color: #8B4513;">Email Address (Optional)</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" style="color: #8B4513;">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests" style="color: #8B4513;">Number of Guests</label>
+                            <select class="form-control" id="guests" required>
+                                <option value="">Select number of guests</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="attending" style="color: #8B4513;">Events Attending</label>
+                            <div class="attending-events">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="event1" name="events">
+                                    <label class="custom-control-label" for="event1">Ganesh Pooja</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="event2" name="events">
+                                    <label class="custom-control-label" for="event2">Sual Pathai And Haldi</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="event3" name="events">
+                                    <label class="custom-control-label" for="event3">Mehndi Night</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="event4" name="events">
+                                    <label class="custom-control-label" for="event4">Marriage</label>
+                                </div>
+                                <div class="custom-control custom-checkbox groom-side-event" style="display: none;">
+                                    <input type="checkbox" class="custom-control-input" id="event5" name="events">
+                                    <label class="custom-control-label" for="event5">Sangeet & Reception</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" style="color: #8B4513;">Message (Optional)</label>
+                            <textarea class="form-control" id="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-block" style="background-color: #8B4513; color: white;">Submit RSVP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Images Start -->
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-6 p-0">
+                <img src="img/left.png" alt="Left Background" class="background-left">
+            </div>
+            <div class="col-6 p-0">
+                <img src="img/right.png" alt="Right Background" class="background-right">
+            </div>
+        </div>
+    </div>
+    <!-- Background Images End -->
+
+    <!-- Event Start -->
+    <div class="container-fluid py-0" id="event" style="margin-top: -5px;">
+        <div class="container pt-0 pb-3">
+            <div class="section-title position-relative text-center">
+                <!-- <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px; font-size: 1.5rem;">Events</h6> -->
+                <h1 class="font-secondary display-3 wedding-font" style="font-family: 'Playfair Display', serif; font-size: 3rem;">Our Wedding Events</h1>
+            </div>
+            <div class="event-container">
+                <!-- Engagement -->
+                <!-- <div class="event-card">
+                    <div class="p-4 glassmorphism shine" style="border-radius: 4px; background-color: rgba(230, 200, 255, 0.3);">
+                        <div class="text-center mb-4">
+                            <img class="img-fluid" src="img/engmnt.png" alt="" style="max-width: 150px;">
+                        </div>
+                        <div class="text-center">
+                            <h4 class="mb-2" style="color: #4B0082;">Engagement</h4>
+                            <p class="text-uppercase mb-2" style="color: #8A2BE2;">27 Nov 2024 | 02:00 PM | Kashipur</p>
+                        </div>
+                    </div>
+                </div>
+                 -->
+                <!-- Ganesh Pooja -->
+                <div class="event-card">
+                    <div class="p-4 glassmorphism shine" style="border-radius: 4px; background-color: rgba(255, 200, 200, 0.3);">
+                        <div class="text-center mb-4">
+                            <img class="img-fluid" src="img/lord ganpati happy ganesh chaturthi_16761044-400x400.png" alt="" style="max-width: 150px;">
+                        </div>
+                        <div class="text-center">
+                            <h4 class="mb-2" style="color: #8B0000;">Ganesh Pooja</h4>
+                            <p class="text-uppercase mb-2" style="color: #A52A2A;">06 Dec 2024 | 10:00 AM | Family Residence</p>
+                            <p class="m-0" style="color: #800000;">वक्रतुण्ड महकाय सूर्यकोटि समप्रभ । निर्विघ्नं कुरु मे देव सर्वका्येषु सर्वद ॥</p>
+                            <p style="color: #800000;">Oh, Divine Lord, please bless my endeavors so they're obstacle-free, in everything I do, always.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sual Pathai And Haldi -->
+                <div class="event-card">
+                    <div class="p-4 glassmorphism shine" style="border-radius: 4px; background-color: rgba(255, 230, 180, 0.3);">
+                        <div class="text-center mb-4">
+                            <img class="img-fluid" src="img/indian wedding mehendi and haldi_9009127.png" alt="" style="max-width: 150px;">
+                        </div>
+                        <div class="text-center">
+                            <h4 class="mb-2" style="color: #8B4513;">Sual Pathai And Haldi</h4>
+                            <p class="text-uppercase mb-2" style="color: #A0522D;">06 Dec 2024 | 11:00 AM | Family Residence</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sangeet & Mehndi -->
+                <div class="event-card">
+                    <div class="p-4 glassmorphism shine" style="border-radius: 4px; background-color: rgba(200, 255, 200, 0.3);">
+                        <div class="text-center mb-4">
+                            <img class="img-fluid" src="img/indian wedding mehendi couple_8406493.png" alt="" style="max-width: 150px;">
+                        </div>
+                        <div class="text-center">
+                            <h4 class="mb-2" style="color: #006400;">Mehndi Night</h4>
+                            <p class="text-uppercase mb-2" style="color: #228B22;">06 Dec 2024 | 06:00 PM | Family Residence</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marriage -->
+                <div class="event-card">
+                    <div class="p-4 glassmorphism shine" style="border-radius: 4px; background-color: rgba(255, 200, 200, 0.3);">
+                        <div class="text-center mb-4">
+                            <img class="img-fluid" src="img/weddinglehnga.png" alt="" style="max-width: 150px;">
+                        </div>
+                        <div class="text-center">
+                            <h4 class="mb-2" style="color: #8B0000;">Marriage</h4>
+                            <p class="text-uppercase mb-2" style="color: #A52A2A;">07 Dec 2024 | 7:00 PM | Sanskriti Greens, Kashipur</p>
+                            <a href="https://www.google.com/maps?q=Sanskriti+Greens+Hotel+%26+Banquets,+Kashipur,+Uttarakhand&z=15" 
+                                   target="_blank" 
+                                   class="btn mb-3" 
+                                   style="background-color: #8B0000; color: #FFFFFF; border: none;">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>See the Venue
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vidayi -->
+                <div class="event-card">
+                    <div class="p-4 glassmorphism shine" style="border-radius: 4px; background-color: rgba(220, 220, 220, 0.3);">
+                        <div class="text-center mb-4">
+                            <img class="img-fluid" src="img/vidayii.png" alt="" style="max-width: 150px;">
+                        </div>
+                        <div class="text-center">
+                            <h4 class="mb-2" style="color: #2F4F4F;">Vidayi</h4>
+                            <p class="text-uppercase mb-2" style="color: #696969;">08 Dec 2024 | 08:00 AM | Sanskriti Greens, Kashipur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Event End -->
+
+
+    <!-- Gallery Start -->
+    <!-- <div class="container-fluid bg-gallery" id="gallery" style="padding: 120px 0; margin: 90px 0;">
+        <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
+            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Gallery</h6>
+            <h1 class="font-secondary display-4 text-white">Our Photo Gallery</h1>
+            <i class="far fa-heart text-white"></i>
+        </div>
+        <div class="owl-carousel gallery-carousel">
+            <div class="gallery-item">
+                <img class="img-fluid w-100" src="img/gallery-1.jpg" alt="">
+                <a href="img/gallery-1.jpg" data-lightbox="gallery">
+                    <i class="fa fa-2x fa-plus text-white"></i>
+                </a>
+            </div>
+            <div class="gallery-item">
+                <img class="img-fluid w-100" src="img/gallery-2.jpg" alt="">
+                <a href="img/gallery-2.jpg" data-lightbox="gallery">
+                    <i class="fa fa-2x fa-plus text-white"></i>
+                </a>
+            </div>
+            <div class="gallery-item">
+                <img class="img-fluid w-100" src="img/gallery-3.jpg" alt="">
+                <a href="img/gallery-3.jpg" data-lightbox="gallery">
+                    <i class="fa fa-2x fa-plus text-white"></i>
+                </a>
+            </div>
+            <div class="gallery-item">
+                <img class="img-fluid w-100" src="img/gallery-4.jpg" alt="">
+                <a href="img/gallery-4.jpg" data-lightbox="gallery">
+                    <i class="fa fa-2x fa-plus text-white"></i>
+                </a>
+            </div>
+            <div class="gallery-item">
+                <img class="img-fluid w-100" src="img/gallery-5.jpg" alt="">
+                <a href="img/gallery-5.jpg" data-lightbox="gallery">
+                    <i class="fa fa-2x fa-plus text-white"></i>
+                </a>
+            </div>
+            <div class="gallery-item">
+                <img class="img-fluid w-100" src="img/gallery-6.jpg" alt="">
+                <a href="img/gallery-6.jpg" data-lightbox="gallery">
+                    <i class="fa fa-2x fa-plus text-white"></i>
+                </a>
+            </div>
+        </div>
+    </div> -->
+    <!-- Gallery End -->
+
+
+    <!-- Event Start -->
+    <!-- <div class="container-fluid py-5" id="event">
+        <div class="container py-5">
+            <div class="section-title position-relative text-center">
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Event</h6>
+                <h1 class="font-secondary display-4">Our Wedding Event</h1>
+                <i class="far fa-heart text-dark"></i>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h5 class="font-weight-normal text-muted mb-3 pb-3">Clita ipsum aliquyam dolor diam dolores elitr nonumy. Rebum sea vero ipsum eirmod tempor kasd. Diam amet lorem erat eos sit lorem elitr justo</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 border-right border-primary">
+                    <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
+                        <img class="img-fluid mb-4" src="img/event-1.jpg" alt="">
+                        <h4 class="mb-3">The Reception</h4>
+                        <p class="mb-2">123 Street, New York, USA</p>
+                        <p class="mb-0">12:00AM - 13:00PM</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center text-md-left ml-md-3">
+                        <img class="img-fluid mb-4" src="img/event-2.jpg" alt="">
+                        <h4 class="mb-3">Wedding Party</h4>
+                        <p class="mb-2">123 Street, New York, USA</p>
+                        <p class="mb-0">12:00AM - 13:00PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Event End -->
+
+
+   
+
+    <!-- RSVP Start -->
+    <!-- <div class="container-fluid py-5" id="rsvp">
+        <div class="container py-5">
+            <div class="section-title position-relative text-center">
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RSVP</h6>
+                <h1 class="font-secondary display-4">Join Our Party</h1>
+                <i class="fa fa-heart fa-2x text-primary"></i>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control bg-secondary border-0 py-4 px-3" placeholder="Your Name"/>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="email" class="form-control bg-secondary border-0 py-4 px-3" placeholder="Your Email"/>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <select class="form-control bg-secondary border-0" style="height: 52px;">
+                                        <option>Number of Guest</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <select class="form-control bg-secondary border-0" style="height: 52px;">
+                                        <option>I'm Attending</option>
+                                        <option>All Events</option>
+                                        <option>Wedding Party</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control bg-secondary border-0 py-2 px-3" rows="5" placeholder="Message" required="required"></textarea>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- RSVP End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid text-white py-3 glassmorphism shine" id="contact" style="background-color: #b19cd9; margin-top: 90px;">
+        <div class="container text-center py-2">
+            <div class="section-title position-relative text-center">
+                <h1 class="font-secondary display-4 text-white" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;">Contact Us</h1>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-10">
+                    <div class="contact-card p-3" style="background-color: #F5F5DC; border-radius: 10px;">
+                        <div class="row">
+                            <div class="col-md-6 mb-2 groom-contact" style="text-align: left;">
+                                <p style="color: #666666; font-size: 0.9rem;">
+                                    <strong>Shyam Narayan Pandey (Father)</strong>
+                                    <a href="tel:+919910594167" style="color: #666666; font-size: 1.2rem; margin-right: 10px;">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </a>
+                                    <a href="https://wa.me/919910594167" target="_blank">
+                                        <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.2rem;"></i>
+                                    </a>
+                                </p>
+                                <p style="color: #666666; margin-bottom: 5px; font-size: 0.9rem;">
+                                    <strong>Kunal Pandey</strong>
+                                    <a href="tel:+919667772136" style="color: #666666; font-size: 1.2rem; margin-right: 10px;">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </a>
+                                    <a href="https://wa.me/919667772136" target="_blank">
+                                        <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.2rem;"></i>
+                                    </a>
+                                </p>
+                                
+                                <div class="address-section" style="color: #666666; font-size: 0.8rem; text-align: left; margin-top: 10px;">
+                                    <strong>Address:</strong><br>
+                                    Shyam Narayan Pandey,<br>
+                                    G-162,<br>
+                                    Gamma-II, Greater Noida,<br>
+                                    Uttar Pradesh, Gautam Budh Nagar, 201310,<br>
+                                    Landmark: Ever Green Sweets & Greater Noida Authority
+                                </div>
+                                <a href="https://maps.app.goo.gl/zxNXFPtkdi9GXH8V7" target="_blank" class="btn btn-sm btn-light mt-2">
+                                    <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                                </a>
+                            </div>
+                            <div class="col-md-6 mb-2 bride-contact" style="text-align: left;">
+                                <p style="color: #666666; font-size: 0.9rem;">
+                                    <strong>Dileep Deshmukh (Father)</strong>
+                                    <a href="tel:+919719XXXX82" style="color: #666666; font-size: 1.2rem; margin-right: 10px;">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </a>
+                                    <a href="https://wa.me/919719XXXX82" target="_blank">
+                                        <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.2rem;"></i>
+                                    </a>
+                                </p>
+                                <!--
+                                For adding other responsible members of family
+                                <p style="color: #666666; margin-bottom: 5px; font-size: 0.9rem;">
+                                    <strong>Pratik Deshmukh (Brother)</strong>
+                                    <a href="tel:+919758XXXX79" style="color: #666666; font-size: 1.2rem; margin-right: 10px;">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </a>
+                                    <a href="https://wa.me/919758XXXX79" target="_blank">
+                                        <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.2rem;"></i>
+                                    </a>
+                                </p>
+                            -->
+                                
+                                <div class="address-section" style="color: #666666; font-size: 0.8rem; text-align: left; margin-top: 10px;">
+                                    <strong>Address:</strong><br>
+                                    Dileep Deshmukh,<br>
+                                    Rajpuram Colony,<br>
+                                    Manpur Road,<br>
+                                    Kashipur, Uttarakhand, 244713,<br>
+                                    Landmark: Yadav Atta Chakki
+                                </div>
+                                <a href="https://www.google.com/maps?q=29.2267951965332,78.9595718383789" target="_blank" class="btn btn-sm btn-light mt-2">
+                                    <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <i class="fa fa-heart fa-2x text-primary"></i>
+            </div>
+            <p class="m-0 mt-2" style="font-size: 0.8rem;">Designed by <a class="text-primary" href="mailto:kunalniet@gmail.com">Janki & Kunal</a></p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Scroll to Bottom -->
+    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Add these lines before your main.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+    <!-- Your existing script tag -->
+    <script src="js/main.js"></script>
+
+    <!-- Update the audio tag -->
+    <audio id="backgroundMusic" loop>
+        <source src="music/ranjha-sid-x-kiara-version-official-extended-audio-sidharth-malhotra-kiar_EFOcWrR4.mp3" preload="auto" loop="true" type="audio/mpeg">
+        <script src="js/main.js"></script>
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Update the mute button -->
+    <div id="muteButton" style="position: fixed; bottom: 25px; left: 25px; z-index: 1000; cursor: pointer;">
+        <img src="img/music-stop-icon.png" alt="Music Stopped" style="width: 42px; height: 42px;">
+    </div>
+
+    <!-- Make sure this is the only audio element in your HTML -->
+    <!-- <audio id="audio" src="music/Aayi-Shubh-Ghadi-Dekho-Mare-Aangan-Aaj-Ri-Wedding-Song.mp3">
+        <p>If you are reading this, it is because your browser does not support the audio element.</p>
+    </audio>
+  -->
+
+    <!-- Add this line before the closing </body> tag -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+
+    <!-- Replace the existing addToCalendar function with the new one provided above -->
+    <script>
+    function addToCalendar(e) {
+        e.preventDefault();
+        
+        var startDate = new Date('2024-12-07T10:00:00');
+        var endDate = new Date('2024-12-07T22:00:00');
+        
+        var icsFile = 
+            'BEGIN:VCALENDAR\n' +
+            'VERSION:2.0\n' +
+            'BEGIN:VEVENT\n' +
+            'URL:' + window.location.href + '\n' +
+            'DTSTART:' + startDate.toISOString().replace(/-|:|\.\d\d\d/g, '') + '\n' +
+            'DTEND:' + endDate.toISOString().replace(/-|:|\.\d\d\d/g, '') + '\n' +
+            'SUMMARY:Kunal & Janki\'s Wedding\n' +
+            'DESCRIPTION:We are excited to celebrate our special day with you!\n' +
+            'LOCATION:Radisson Blu MBD, Noida\n' +
+            'END:VEVENT\n' +
+            'END:VCALENDAR';
+
+        var blob = new Blob([icsFile], { type: 'text/calendar;charset=utf-8' });
+        saveAs(blob, "Wedding_Invitation.ics");
+    }
+    </script>
+
+    <!-- Add this script before the closing </body> tag -->
+    <script>
+        // Add this variable at the top to track which side was selected
+        let selectedSide = 'groom'; // Default to groom's side
+
+        // Update the selectOption function to set the selectedSide
+        function selectOption(option) {
+            selectedSide = option;
+            console.log(option + " selected");
+            document.getElementById('welcomeOverlay').style.display = 'none';
+            
+            // Scroll to the top of the page
+            window.scrollTo(0, 0);
+            
+            if (option === 'bride') {
+                // Change the order of names for bride's side
+                document.querySelectorAll('.couple-names').forEach(el => {
+                    el.innerHTML = 'Janki <span class="text-primary">&</span> Kunal';
+                });
+                // Update the "We're getting married" div
+                document.querySelector('.carousel-caption h1').innerHTML = '<span class="apurvaa-text">Janki</span> & Kunal';
+                // Show only bride's side contact details
+                document.querySelector('.groom-contact').style.display = 'none';
+                document.querySelector('.bride-contact').style.display = 'block';
+                document.querySelector('.groom-side-event').style.display = 'none';
+            } else if (option === 'groom') {
+                // Add Sangeet & Reception event for groom's side
+                const eventContainer = document.querySelector('.event-container');
+                const sangeetEvent = `
+                    <div class="event-card">
+                        <div class="p-4 glassmorphism shine" style="border-radius: 4px; background-color: rgba(255, 182, 193, 0.3);">
+                            <div class="text-center mb-4">
+                                <img class="img-fluid" src="img/sangeet.jpg" alt="" style="max-width: 150px;">
+                            </div>
+                            <div class="text-center">
+                                <h4 class="mb-2" style="color: #8B0000;">Sangeet & Reception</h4>
+                                <p class="text-uppercase mb-2" style="color: #A52A2A;">08 Dec 2024 | 05:00 PM | Dhani Resort, Khatima</p>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Dhani+Resort+Khatima" 
+                                   target="_blank" 
+                                   class="btn mb-3" 
+                                   style="background-color: #8B0000; color: #FFFFFF; border: none;">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>See the Venue
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                eventContainer.insertAdjacentHTML('beforeend', sangeetEvent);
+                // Show only groom's side contact details
+                document.querySelector('.groom-contact').style.display = 'block';
+                document.querySelector('.bride-contact').style.display = 'none';
+                document.querySelector('.groom-side-event').style.display = 'block';
+            }
+        }
+
+        // Add the downloadInvitation function
+        function downloadInvitation(e) {
+            e.preventDefault();
+            
+            // Determine which video to download based on selected side
+            const videoPath = selectedSide === 'bride' ? 'img/invite_bride.mp4' : 'img/invite_groom.mp4';
+            
+            // Create a temporary anchor element
+            const link = document.createElement('a');
+            link.href = videoPath;
+            link.download = selectedSide === 'bride' ? 'Bride_Side_Invitation.mp4' : 'Groom_Side_Invitation.mp4';
+            
+            // Append to document, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Add RSVP form handling
+        function handleRSVP(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value || 'Not provided',
+                phone: document.getElementById('phone').value,
+                guests: document.getElementById('guests').value,
+                events: Array.from(document.querySelectorAll('input[name="events"]:checked'))
+                    .map(cb => cb.nextElementSibling.textContent),
+                message: document.getElementById('message').value || 'No message',
+                timestamp: new Date().toISOString(),
+                side: selectedSide
+            };
+
+            // Replace this URL with your actual Google Apps Script deployment URL
+            const scriptURL = 'GET https://api.netlify.com/api/v1/sites/844c4710-34ea-4337-a9ea-6dc6b1a2dc06/submissions';
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(() => {
+                    alert('Thank you for your RSVP! We look forward to celebrating with you.');
+                    $('#rsvpModal').modal('hide');
+                    document.getElementById('rsvpForm').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your RSVP. Please try again or contact us directly.');
+            });
+        }
+
+        // Add some styling for the checkboxes
+        document.addEventListener('DOMContentLoaded', function() {
+            const style = document.createElement('style');
+            style.textContent = `
+                .attending-events {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                .custom-control-label {
+                    color: #8B4513;
+                }
+                .custom-control-input:checked ~ .custom-control-label::before {
+                    background-color: #8B4513;
+                    border-color: #8B4513;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+
+    <!-- Add this script at the end of the body, just before the closing </body> tag -->
+    <script>
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Enable native smooth scrolling
+        if ('scrollBehavior' in document.documentElement.style) {
+            document.documentElement.style.scrollBehavior = 'smooth';
+        } else {
+            // Fallback for browsers that don't support smooth scrolling
+            const smoothScroll = (target) => {
+                const targetPosition = target.getBoundingClientRect().top;
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                let startTime = null;
+
+                const animation = (currentTime) => {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const run = ease(timeElapsed, startPosition, distance, 600);
+                    window.scrollTo(0, run);
+                    if (timeElapsed < 600) requestAnimationFrame(animation);
+                };
+
+                const ease = (t, b, c, d) => {
+                    t /= d / 2;
+                    if (t < 1) return c / 2 * t * t + b;
+                    t--;
+                    return -c / 2 * (t * (t - 2) - 1) + b;
+                };
+
+                requestAnimationFrame(animation);
+            };
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        smoothScroll(targetElement);
+                    }
+                });
+            });
+        }
+    </script>
+
+    <!-- Add these before your closing </body> tag -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
+
+    <script>
+    // Your Firebase configuration
+    const firebaseConfig = {
+        // Your config object from Firebase Console
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Update handleRSVP function
+    function handleRSVP(event) {
+        event.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value || 'Not provided',
+            phone: document.getElementById('phone').value,
+            guests: document.getElementById('guests').value,
+            events: Array.from(document.querySelectorAll('input[name="events"]:checked'))
+                .map(cb => cb.nextElementSibling.textContent),
+            message: document.getElementById('message').value || 'No message',
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            side: selectedSide
+        };
+
+        // Add to Firestore
+        db.collection('rsvps').add(formData)
+            .then(() => {
+                alert('Thank you for your RSVP! We look forward to celebrating with you.');
+                $('#rsvpModal').modal('hide');
+                document.getElementById('rsvpForm').reset();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('There was an error submitting your RSVP. Please try again or contact us directly.');
+            });
+    }
+    </script> -->
+</body>
+</html>
