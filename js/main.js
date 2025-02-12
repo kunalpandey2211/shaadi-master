@@ -211,8 +211,8 @@ $(document).ready(function() {
 function addToCalendar(e) {
     e.preventDefault();
     
-    var startDate = new Date('2025-12-07T10:00:00');
-    var endDate = new Date('2025-12-07T22:00:00');
+    var startDate = new Date('2025-05-20T19:00:00');
+    var endDate = new Date('2025-05-20T22:00:00');
     
     var calendarEvent = {
         title: "Kunal & Supriya Engagement",
