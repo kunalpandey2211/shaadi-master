@@ -181,7 +181,7 @@
 
 // Timer function
 function updateTimer() {
-    var countDownDate = new Date("December 7, 2026  11:27:15").getTime();
+    var countDownDate = new Date("May 22, 2025  07:15:30").getTime();
     var now = new Date().getTime();
     var timeLeft = countDownDate - now;
 
@@ -215,9 +215,9 @@ function addToCalendar(e) {
     var endDate = new Date('2024-12-07T22:00:00');
     
     var calendarEvent = {
-        title: "Kunal & Janki's Wedding",
+        title: "Kunal & Supriya Engagement",
         description: "We are excited to celebrate our special day with you!",
-        location: "Sanskriti Greens, Kashipur",
+        location: "Cafe De Flora, Delhi",
         start: startDate.toISOString(),
         end: endDate.toISOString()
     };
@@ -249,7 +249,7 @@ function addToCalendar(e) {
         var blob = new Blob([icsFile], { type: 'text/calendar;charset=utf-8' });
         var link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.download = "Wedding_Invitation.ics";
+        link.download = "Engagement_Invitation.ics";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
